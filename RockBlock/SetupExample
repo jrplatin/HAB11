@@ -1,1 +1,21 @@
 
+#include "SoftwareSerial.h"
+#include "IridiumSBD.h" 
+SoftwareSerial nss(11, 10);
+IridiumSBD isbd(nss);
+
+void setup() {
+  Serial.begin(38400);
+  Serial.print("started");
+  nss.begin(19200);
+
+  isbd.attachConsole(Serial);
+  isbd.attachDiags(Serial);
+  isbd.setPowerProfile(0);
+  isbd.begin();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
